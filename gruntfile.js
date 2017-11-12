@@ -19,6 +19,15 @@ module.exports = function (grunt) {
                 ],
                 out: 'bundle/ai.module.js'
             },
+            staticmodule: {
+                src: [
+                    'JavaScript/JavaScriptSDK/*.ts',
+                    '!JavaScript/JavaScriptSDK/Init.ts',
+                    'JavaScript/JavaScriptSDK.Interfaces/*.ts',
+                    'JavaScript/JavaScriptSDK.StaticModule/*.ts',
+                ],
+                out: 'bundle/ai.staticmodule.js'
+            },
             types: {
                 src: [
                     'JavaScript/JavaScriptSDK.Tests/DefinitionTypes/*.ts'
@@ -115,5 +124,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["ts:default", "uglify:ai", "uglify:snippet"]);
     grunt.registerTask("module", ["ts:module"]);
+    grunt.registerTask("staticmodule", ["ts:staticmodule"]);
     grunt.registerTask("test", ["ts:default", "ts:test", "ts:testE2E", "ts:types", "qunit"]);
 };
